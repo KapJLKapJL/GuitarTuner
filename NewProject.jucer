@@ -5,7 +5,11 @@
               pluginManufacturer="KapJL" pluginVST3Category="Analyzer" cppLanguageStandard="17">
   <MAINGROUP id="T0CLuH" name="GuitarTuner">
     <GROUP id="{42FE57CE-5BF9-2C21-2F4E-A3F201952CED}" name="Source">
-      <FILE id="owXact" name="RingBuffer.cpp" compile="1" resource="0" file="Source/RingBuffer.cpp"/>
+      <FILE id="OW6qwi" name="FreqFinderNSDF.cpp" compile="1" resource="0"
+            file="Source/FreqFinderNSDF.cpp"/>
+      <FILE id="r3Y1Q0" name="FreqFinderNSDF.h" compile="0" resource="0"
+            file="Source/FreqFinderNSDF.h"/>
+      <FILE id="UOD1Ha" name="IFreqFinder.h" compile="0" resource="0" file="Source/IFreqFinder.h"/>
       <FILE id="p3t93q" name="RingBuffer.h" compile="0" resource="0" file="Source/RingBuffer.h"/>
       <FILE id="Wx7cjq" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
