@@ -39,6 +39,16 @@ public:
         return m_samples[(m_last_idx + 1 + idx) % size_];
     }
 
+    auto begin()
+    {
+        return m_samples.begin();
+    }
+
+    auto end()
+    {
+        return m_samples.end();
+    }
+
 private:
     std::array<float, size_> m_samples{ 0.f };
     std::size_t m_last_idx{ 0 };
