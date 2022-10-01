@@ -1,9 +1,10 @@
 #pragma once
+#include<optional>
 
 class IFreqFinder
 {
 public:
 	virtual ~IFreqFinder() = default;
 
-	virtual float calculate() = 0;
+	virtual std::optional<double> calculate() = 0;
 };
