@@ -62,9 +62,11 @@ public:
 
     void changeTune(std::string tune_name);
 
+    std::string getCurrentTune() const;
+
 protected:
     std::map<std::string, GuitarTune>   m_guitar_tunes;
-    std::string                         m_current_tune;
+    std::string                         m_current_tune{ "" };
 
     std::list<Listener*>    m_listeners;
 };

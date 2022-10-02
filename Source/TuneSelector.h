@@ -22,6 +22,7 @@ public:
 	void onEvent(GuitarTunes::TuneAdded) override;
 
 private:
-	juce::ComboBox m_combobox;
-	GuitarTunes	   m_guitar_tunes;
+	juce::ComboBox	m_combobox;
+	GuitarTunes		m_guitar_tunes;
+	uint32_t		m_tune_counter{ 1 };
 };

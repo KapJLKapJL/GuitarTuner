@@ -21,30 +21,6 @@ void GuitarTune::setString(uint8_t idx, GuitarStringData&& string_data)
 GuitarTunes::GuitarTunes(Listener* first)
 {
     addListener(first);
-    
-    addTune(
-        "E-standart",
-        GuitarTune(
-            "E", 329.6f,
-            "B", 247.0f,
-            "G", 196.0f,
-            "D", 146.8f,
-            "A", 110.0f,
-            "E", 82.41f
-        )
-    );
-    addTune(
-        "Drop-D",
-        GuitarTune(
-            "E", 329.6f,
-            "B", 247.0f,
-            "G", 196.0f,
-            "D", 146.8f,
-            "A", 110.0f,
-            "D", 73.43f)
-    );
-
-    m_current_tune = "E-standart";
 }
 
 void GuitarTunes::addTune(std::string&& tune_name, GuitarTune&& guitar_tune)
@@ -92,4 +68,9 @@ void GuitarTunes::changeTune(std::string tune_name)
             listener->onEvent(TuneIsChanged{ tune_name });
         }
     );
+}
+
+std::string GuitarTunes::getCurrentTune() const
+{
+    return m_current_tune;
 }
