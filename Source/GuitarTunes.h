@@ -3,6 +3,7 @@
 #include<array>
 #include<memory>
 #include<map>
+#include<list>
 
 
 class GuitarStringData
@@ -38,11 +39,32 @@ private:
 class GuitarTunes
 {
 public:
-    GuitarTunes();
+    struct TuneAdded { std::string tune_name; };
+    struct TuneIsChanged { std::string tune_name; };
 
-    void add(std::string&& tune_name, GuitarTune&& guitar_tune);
+    class Listener
+    {
+    public:
+        Listener() = default;
+        virtual ~Listener() = default;
+
+        virtual void onEvent(TuneAdded) {};
+        virtual void onEvent(TuneIsChanged) {};
+    };
+
+
+    GuitarTunes(Listener* first);
+
+    void addTune(std::string&& tune_name, GuitarTune&& guitar_tune);
+
+    void addListener(Listener*);
+    void deleteListener(Listener*);
+
+    void changeTune(std::string tune_name);
 
 protected:
     std::map<std::string, GuitarTune>   m_guitar_tunes;
     std::string                         m_current_tune;
+
+    std::list<Listener*>    m_listeners;
 };

@@ -1,5 +1,8 @@
 #include "GuitarTunes.h"
 
+#include <algorithm>
+
+
 GuitarTune::GuitarTune(std::string&& note1, float frequency1, std::string&& note2, float frequency2, std::string&& note3, float frequency3, std::string&& note4, float frequency4, std::string&& note5, float frequency5, std::string&& note6, float frequency6)
 {
     setString(0, GuitarStringData(std::move(note1), frequency1));
@@ -15,9 +18,11 @@ void GuitarTune::setString(uint8_t idx, GuitarStringData&& string_data)
     m_guitar_strings[idx] = std::move(string_data);
 }
 
-GuitarTunes::GuitarTunes()
+GuitarTunes::GuitarTunes(Listener* first)
 {
-    add(
+    addListener(first);
+    
+    addTune(
         "E-standart",
         GuitarTune(
             "E", 329.6f,
@@ -28,7 +33,7 @@ GuitarTunes::GuitarTunes()
             "E", 82.41f
         )
     );
-    add(
+    addTune(
         "Drop-D",
         GuitarTune(
             "E", 329.6f,
@@ -42,12 +47,49 @@ GuitarTunes::GuitarTunes()
     m_current_tune = "E-standart";
 }
 
-void GuitarTunes::add(std::string&& tune_name, GuitarTune&& guitar_tune)
+void GuitarTunes::addTune(std::string&& tune_name, GuitarTune&& guitar_tune)
 {
     m_guitar_tunes.insert(
         std::pair<std::string, GuitarTune>(
-            std::move(tune_name),
+            tune_name,
             std::move(guitar_tune)
         )
+    );
+
+    std::for_each(
+        m_listeners.begin(),
+        m_listeners.end(),
+        [tune_name](Listener* listener)
+        {
+            listener->onEvent(TuneAdded{ tune_name });
+        }
+    );
+}
+
+void GuitarTunes::addListener(Listener* listener)
+{
+    m_listeners.emplace_back(listener);
+}
+
+void GuitarTunes::deleteListener(Listener* listener)
+{
+    auto listener_it = std::find(m_listeners.begin(), m_listeners.end(), listener);
+    if (listener_it != m_listeners.end())
+    {
+        m_listeners.erase(listener_it);
+    }
+}
+
+void GuitarTunes::changeTune(std::string tune_name)
+{
+    m_current_tune = tune_name;
+
+    std::for_each(
+        m_listeners.begin(),
+        m_listeners.end(),
+        [tune_name](Listener* listener)
+        {
+            listener->onEvent(TuneIsChanged{ tune_name });
+        }
     );
 }
