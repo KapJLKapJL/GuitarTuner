@@ -5,6 +5,8 @@
               pluginManufacturer="KapJL" pluginVST3Category="Analyzer" cppLanguageStandard="17">
   <MAINGROUP id="T0CLuH" name="GuitarTuner">
     <GROUP id="{42FE57CE-5BF9-2C21-2F4E-A3F201952CED}" name="Source">
+      <FILE id="uSyflf" name="GuitarTunes.cpp" compile="1" resource="0" file="Source/GuitarTunes.cpp"/>
+      <FILE id="aLWd6P" name="GuitarTunes.h" compile="0" resource="0" file="Source/GuitarTunes.h"/>
       <FILE id="OW6qwi" name="FreqFinderNSDF.cpp" compile="1" resource="0"
             file="Source/FreqFinderNSDF.cpp"/>
       <FILE id="r3Y1Q0" name="FreqFinderNSDF.h" compile="0" resource="0"
