@@ -54,7 +54,7 @@ void GuitarTunes::addTune(std::string&& tune_name, GuitarTune&& guitar_tune)
 
 void GuitarTunes::addListener(Listener* listener)
 {
-    m_listeners.emplace_back(listener);
+    auto list = m_listeners.emplace_back(listener);
 }
 
 void GuitarTunes::deleteListener(Listener* listener)

@@ -10,11 +10,43 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-NewProjectAudioProcessorEditor::NewProjectAudioProcessorEditor (NewProjectAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p)
+NewProjectAudioProcessorEditor::NewProjectAudioProcessorEditor(NewProjectAudioProcessor& p)
+    : AudioProcessorEditor(&p), audioProcessor(p),
+    m_string_selector(m_tune_selector.getGuitarTunes())
 {
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to be.
+    auto tunes = m_tune_selector.getGuitarTunes();
+
+    tunes->addTune(
+        "E-standart",
+        GuitarTune(
+            "E", 329.6f,
+            "B", 247.0f,
+            "G", 196.0f,
+            "D", 146.8f,
+            "A", 110.0f,
+            "E", 82.41f)
+    );
+    tunes->changeTune("E-standart");
+    tunes->addTune(
+        "Drop-D",
+        GuitarTune(
+            "E", 329.6f,
+            "B", 247.0f,
+            "G", 196.0f,
+            "D", 146.8f,
+            "A", 110.0f,
+            "D", 73.43f)
+    );
+
+
+    addAndMakeVisible(m_tune_selector);
+    addAndMakeVisible(m_string_selector);
+
+    addAndMakeVisible(m_tune);
+    m_tune.onClick = [this] {
+        getStringSelector()->getStringsModel()->onEvent(StringsModel::IsTuned());
+    };
+
     setSize (400, 300);
 }
 
@@ -37,4 +69,9 @@ void NewProjectAudioProcessorEditor::resized()
 {
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
+
+    auto bounds = getLocalBounds();
+    m_tune_selector.setBounds(bounds.getX(), bounds.getY(), bounds.getWidth() * 0.4f, bounds.getHeight() * 0.1);
+    m_string_selector.setBounds(bounds.getX(), bounds.getY() + bounds.getHeight() * 0.1, bounds.getWidth(), bounds.getHeight() * 0.4);
+    m_tune.setBounds(bounds.getX(), bounds.getY() + bounds.getHeight() * 0.1 + bounds.getHeight() * 0.4, bounds.getWidth() * 0.4f, bounds.getHeight() * 0.1);
 }

@@ -1,4 +1,5 @@
 #pragma once
+#include<map>
 #include<JuceHeader.h>
 
 
@@ -20,9 +21,14 @@ public:
 	void comboBoxChanged(juce::ComboBox*) override;
 
 	void onEvent(GuitarTunes::TuneAdded) override;
+	void onEvent(GuitarTunes::TuneIsChanged) override;
+
+	GuitarTunes* getGuitarTunes();
 
 private:
 	juce::ComboBox	m_combobox;
 	GuitarTunes		m_guitar_tunes;
 	uint32_t		m_tune_counter{ 1 };
+
+	std::map<std::string, int>	m_tune_ids;
 };

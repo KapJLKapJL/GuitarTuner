@@ -11,6 +11,9 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 
+#include "TuneSelector.h"
+#include "StringSelector.h"
+
 //==============================================================================
 /**
 */
@@ -24,7 +27,13 @@ public:
     void paint (juce::Graphics&) override;
     void resized() override;
 
+    StringSelector* getStringSelector() { return &m_string_selector; }
+
 private:
+    TuneSelector    m_tune_selector;
+    StringSelector  m_string_selector;
+    juce::TextButton    m_tune;
+
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     NewProjectAudioProcessor& audioProcessor;

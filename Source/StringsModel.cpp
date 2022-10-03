@@ -1,5 +1,23 @@
 #include "StringsModel.h"
 
+#include<algorithm>
+
+
+StringsModel::StringsModel()
+{
+	onEvent(AutoOff());
+}
+
+void StringsModel::onEvent(IsTuned)
+{
+	std::for_each(m_listeners.begin(), m_listeners.end(),
+		[](Listener* listener)
+		{
+			listener->onEvent(IsTuned());
+		}
+	);
+}
+
 void StringsModel::onEvent(AutoOn)
 {
 	m_strategi.reset(new ChangeStringOnFreqChange(this));

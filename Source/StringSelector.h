@@ -16,13 +16,18 @@ public:
 	StringSelector(GuitarTunes*);
 	virtual ~StringSelector() = default;
 
+	void paint(juce::Graphics&) override;
+	void resized() override;
+
 	void onEvent(GuitarTunes::TuneIsChanged) override;
 	void onEvent(StringsModel::IsTuned) override;
 
-	float getStringFrequency() override;
-	int getNearestString(float freq) override;
+	float	getStringFrequency() override;
+	int		getNearestString(float freq) override;
 
 	void updateToggleState(juce::Button* button);
+
+	StringsModel* getStringsModel();
 
 private:
 	void makeButtons();

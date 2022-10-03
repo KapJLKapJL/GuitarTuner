@@ -5,10 +5,11 @@
 class StringsModel
 {
 public:
-	StringsModel() = default;
+	StringsModel();
 	virtual ~StringsModel() = default;
 
 	struct IsTuned{};
+	void onEvent(IsTuned);
 	class Listener
 	{
 	public:

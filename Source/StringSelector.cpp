@@ -9,6 +9,33 @@ StringSelector::StringSelector(GuitarTunes* tunes) :
 	makeButtons();
 }
 
+void StringSelector::paint(juce::Graphics&)
+{
+}
+
+void StringSelector::resized()
+{
+	int string_index = 5;
+	auto bounds = getLocalBounds();
+	auto button_width = bounds.getWidth() * (2.f + 2.f / 3.f) / 19.f;
+	auto button_distance = bounds.getWidth() * 3.f / 19.f;
+	auto button_x_offset = bounds.getWidth() * 2.f / (3.f * 19.f);
+	auto button_height = bounds.getHeight() * 1.5f / 5.f;
+	auto button_y_offset = bounds.getHeight() * 1.75f / 5.f;
+
+	for (auto& button : m_string_buttons)
+	{
+		button.setBounds(
+			button_x_offset + button_distance * string_index,
+			button_y_offset,
+			button_width,
+			button_height
+		);
+
+		string_index--;
+	}
+}
+
 void StringSelector::onEvent(GuitarTunes::TuneIsChanged)
 {
 	auto tune = m_tunes->getCurrentTune();
@@ -50,6 +77,11 @@ void StringSelector::updateToggleState(juce::Button* button)
 	m_model.onEvent(StringsModel::StringChange{id});
 }
 
+StringsModel* StringSelector::getStringsModel()
+{
+	return &m_model;
+}
+
 void StringSelector::makeButtons()
 {
 	auto random = juce::Random::getSystemRandom().nextInt();
@@ -72,6 +104,8 @@ void StringSelector::makeButtons()
 	m_string_buttons[3].setClickingTogglesState(true);
 	m_string_buttons[4].setClickingTogglesState(true);
 	m_string_buttons[5].setClickingTogglesState(true);
+
+	m_string_buttons[0].triggerClick();
 
 	setSize(100, 20);
 }
