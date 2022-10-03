@@ -44,6 +44,11 @@ void StringsModel::onEvent(StringChange event)
 	m_strategi->onEvent(event);
 }
 
+int StringsModel::getCurrentStringId() const
+{
+	return m_current_string;
+}
+
 void StringsModel::ChangeStringOnFreqChange::onEvent(FreqChange event)
 {
 	m_model->m_current_string = m_model->getInformator()->getNearestString(event.freq);

@@ -13,6 +13,16 @@ GuitarTune::GuitarTune(std::string&& note1, float frequency1, std::string&& note
     setString(5, GuitarStringData(std::move(note6), frequency6));
 }
 
+std::string GuitarTune::getStringName(int idx)
+{
+    return m_guitar_strings[idx].note;
+}
+
+float GuitarTune::getStringFreq(int idx)
+{
+    return m_guitar_strings[idx].frequency;
+}
+
 void GuitarTune::setString(uint8_t idx, GuitarStringData&& string_data)
 {
     m_guitar_strings[idx] = std::move(string_data);
@@ -70,7 +80,18 @@ void GuitarTunes::changeTune(std::string tune_name)
     );
 }
 
-std::string GuitarTunes::getCurrentTune() const
+std::string GuitarTunes::getCurrentTuneName() const
 {
-    return m_current_tune;
+    return std::string();
 }
+
+GuitarTune GuitarTunes::getTune(std::string&& tune_name) const
+{
+    return m_guitar_tunes.at(tune_name);
+}
+
+GuitarTune GuitarTunes::getCurrentTune() const
+{
+    return m_guitar_tunes.at(m_current_tune);
+}
+

@@ -29,6 +29,9 @@ public:
                std::string&& note5, float frequency5,
         std::string&& note6, float frequency6);
 
+    std::string getStringName(int idx);
+    float       getStringFreq(int idx);
+
 private:
     void setString(uint8_t idx, GuitarStringData&& string_data);
 
@@ -62,7 +65,10 @@ public:
 
     void changeTune(std::string tune_name);
 
-    std::string getCurrentTune() const;
+    std::string getCurrentTuneName() const;
+    GuitarTune  getTune(std::string&& tune_name) const;
+    GuitarTune  getCurrentTune() const;
+
 
 protected:
     std::map<std::string, GuitarTune>   m_guitar_tunes;

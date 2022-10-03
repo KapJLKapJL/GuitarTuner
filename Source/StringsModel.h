@@ -40,6 +40,8 @@ public:
 	void onEvent(FreqChange);
 	void onEvent(StringChange);
 
+	int getCurrentStringId() const;
+
 private:
 	class ChangeStringStrategi
 	{
