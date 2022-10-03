@@ -10,10 +10,14 @@
 
 #include <JuceHeader.h>
 
+#include "FreqUpdater.h"
+
 //==============================================================================
 /**
 */
-class NewProjectAudioProcessor  : public juce::AudioProcessor
+class NewProjectAudioProcessor  :
+    public juce::AudioProcessor,
+    public FreqFinderGetter
 {
 public:
     //==============================================================================

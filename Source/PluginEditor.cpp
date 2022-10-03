@@ -14,7 +14,8 @@ NewProjectAudioProcessorEditor::NewProjectAudioProcessorEditor(NewProjectAudioPr
     : AudioProcessorEditor(&p), audioProcessor(p),
     m_string_selector(m_tune_selector.getGuitarTunes()),
     m_tuner(m_tune_selector.getGuitarTunes(), m_string_selector.getStringsModel()),
-    m_difference_indicator(&m_tuner)
+    m_difference_indicator(&m_tuner),
+    m_freq_updater(&p, &m_tuner)
 {
     addAndMakeVisible(m_tune_selector);
     addAndMakeVisible(m_string_selector);
@@ -23,6 +24,8 @@ NewProjectAudioProcessorEditor::NewProjectAudioProcessorEditor(NewProjectAudioPr
     m_tune.onClick = [this] {
         m_tuner.onEvent(StringsModel::IsTuned());
     };
+
+    addAndMakeVisible(m_difference_indicator);
 
     setSize (400, 300);
 }

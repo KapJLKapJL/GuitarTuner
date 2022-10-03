@@ -10,9 +10,9 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-NewProjectAudioProcessor::NewProjectAudioProcessor()
+NewProjectAudioProcessor::NewProjectAudioProcessor() :
 #ifndef JucePlugin_PreferredChannelConfigurations
-     : AudioProcessor (BusesProperties()
+      AudioProcessor (BusesProperties()
                      #if ! JucePlugin_IsMidiEffect
                       #if ! JucePlugin_IsSynth
                        .withInput  ("Input",  juce::AudioChannelSet::stereo(), true)
@@ -156,6 +156,13 @@ void NewProjectAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
 
         // ..do something to the data...
     }
+
+    auto* channelData = buffer.getWritePointer(0);
+    for (int i = 0; i < buffer.getNumSamples(); ++i)
+    {
+        pushSampleInRingBuffer(channelData[i]);
+    }
+    setSampleRate(getSampleRate());
 }
 
 //==============================================================================

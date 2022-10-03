@@ -15,6 +15,7 @@
 #include "StringSelector.h"
 #include "Tuner.h"
 #include "DifferenceIndicator.h"
+#include "FreqUpdater.h"
 
 //==============================================================================
 /**
@@ -38,6 +39,8 @@ private:
     juce::TextButton    m_tune;
 
     Tuner   m_tuner;
+
+    FreqUpdater m_freq_updater;
 
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.

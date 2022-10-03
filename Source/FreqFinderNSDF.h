@@ -12,7 +12,7 @@
 * Find pitch from Normalized sqare differrence function
 * "A smarter way to find pitch", Philip McLeod, Geoff Wyvill, University of Otago
 */
-class FreqFinderNSDF : IFreqFinder
+class FreqFinderNSDF : public IFreqFinder
 {
 public:
 	template <class ItType>

@@ -7,6 +7,7 @@ template
 <std::size_t size_>
 class RingBuffer
 {
+    using array = std::array<float, size_>;
 public:
     RingBuffer() = default;
     ~RingBuffer() = default;
@@ -40,7 +41,7 @@ public:
     }
 
 private:
-    std::array<float, size_> m_samples{ 0.f };
+    array m_samples{ 0.f };
     std::size_t m_last_idx{ 0 };
 
     bool is_circle{ false };
