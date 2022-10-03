@@ -13,6 +13,7 @@
 
 #include "TuneSelector.h"
 #include "StringSelector.h"
+#include "Tuner.h"
 
 //==============================================================================
 /**
@@ -33,6 +34,8 @@ private:
     TuneSelector    m_tune_selector;
     StringSelector  m_string_selector;
     juce::TextButton    m_tune;
+
+    Tuner   m_tuner;
 
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.

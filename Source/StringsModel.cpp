@@ -5,7 +5,7 @@
 
 StringsModel::StringsModel()
 {
-	onEvent(AutoOff());
+	
 }
 
 void StringsModel::onEvent(IsTuned)

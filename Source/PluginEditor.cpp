@@ -12,39 +12,15 @@
 //==============================================================================
 NewProjectAudioProcessorEditor::NewProjectAudioProcessorEditor(NewProjectAudioProcessor& p)
     : AudioProcessorEditor(&p), audioProcessor(p),
-    m_string_selector(m_tune_selector.getGuitarTunes())
+    m_string_selector(m_tune_selector.getGuitarTunes()),
+    m_tuner(m_tune_selector.getGuitarTunes(), m_string_selector.getStringsModel())
 {
-    auto tunes = m_tune_selector.getGuitarTunes();
-
-    tunes->addTune(
-        "E-standart",
-        GuitarTune(
-            "E", 329.6f,
-            "B", 247.0f,
-            "G", 196.0f,
-            "D", 146.8f,
-            "A", 110.0f,
-            "E", 82.41f)
-    );
-    tunes->changeTune("E-standart");
-    tunes->addTune(
-        "Drop-D",
-        GuitarTune(
-            "E", 329.6f,
-            "B", 247.0f,
-            "G", 196.0f,
-            "D", 146.8f,
-            "A", 110.0f,
-            "D", 73.43f)
-    );
-
-
     addAndMakeVisible(m_tune_selector);
     addAndMakeVisible(m_string_selector);
 
     addAndMakeVisible(m_tune);
     m_tune.onClick = [this] {
-        getStringSelector()->getStringsModel()->onEvent(StringsModel::IsTuned());
+        m_tuner.onEvent(StringsModel::IsTuned());
     };
 
     setSize (400, 300);
