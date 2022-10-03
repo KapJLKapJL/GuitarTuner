@@ -14,6 +14,7 @@
 #include "TuneSelector.h"
 #include "StringSelector.h"
 #include "Tuner.h"
+#include "DifferenceIndicator.h"
 
 //==============================================================================
 /**
@@ -33,6 +34,7 @@ public:
 private:
     TuneSelector    m_tune_selector;
     StringSelector  m_string_selector;
+    DifferenceIndicator m_difference_indicator;
     juce::TextButton    m_tune;
 
     Tuner   m_tuner;

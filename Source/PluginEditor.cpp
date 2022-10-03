@@ -13,7 +13,8 @@
 NewProjectAudioProcessorEditor::NewProjectAudioProcessorEditor(NewProjectAudioProcessor& p)
     : AudioProcessorEditor(&p), audioProcessor(p),
     m_string_selector(m_tune_selector.getGuitarTunes()),
-    m_tuner(m_tune_selector.getGuitarTunes(), m_string_selector.getStringsModel())
+    m_tuner(m_tune_selector.getGuitarTunes(), m_string_selector.getStringsModel()),
+    m_difference_indicator(&m_tuner)
 {
     addAndMakeVisible(m_tune_selector);
     addAndMakeVisible(m_string_selector);

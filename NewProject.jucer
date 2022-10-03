@@ -5,6 +5,10 @@
               pluginManufacturer="KapJL" pluginVST3Category="Analyzer" cppLanguageStandard="17">
   <MAINGROUP id="T0CLuH" name="GuitarTuner">
     <GROUP id="{42FE57CE-5BF9-2C21-2F4E-A3F201952CED}" name="Source">
+      <FILE id="cYxNQk" name="DifferenceIndicator.cpp" compile="1" resource="0"
+            file="Source/DifferenceIndicator.cpp"/>
+      <FILE id="yqrwRP" name="DifferenceIndicator.h" compile="0" resource="0"
+            file="Source/DifferenceIndicator.h"/>
       <FILE id="j4cvp7" name="Tuner.cpp" compile="1" resource="0" file="Source/Tuner.cpp"/>
       <FILE id="uqZLOc" name="Tuner.h" compile="0" resource="0" file="Source/Tuner.h"/>
       <FILE id="RmX8an" name="StringSelector.cpp" compile="1" resource="0"
