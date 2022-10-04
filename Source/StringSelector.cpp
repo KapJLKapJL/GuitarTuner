@@ -1,7 +1,8 @@
 #include "StringSelector.h"
 
 StringSelector::StringSelector(GuitarTunes* tunes) :
-	m_tunes(tunes)
+	m_tunes(tunes),
+	m_model(this)
 {
 	tunes->addListener(this);
 	m_model.addListener(this);

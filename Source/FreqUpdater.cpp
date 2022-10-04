@@ -22,7 +22,7 @@ FreqUpdater::FreqUpdater(FreqFinderGetter* freq_finder_getter, Tuner* tuner) :
 	m_freq_finder_getter(freq_finder_getter),
 	m_tuner(tuner)
 {
-	startTimer(9000);
+	startTimerHz(5);
 }
 
 void FreqUpdater::timerCallback()

@@ -54,4 +54,10 @@ void NewProjectAudioProcessorEditor::resized()
     m_tune_selector.setBounds(bounds.getX(), bounds.getY(), bounds.getWidth() * 0.4f, bounds.getHeight() * 0.1);
     m_string_selector.setBounds(bounds.getX(), bounds.getY() + bounds.getHeight() * 0.1, bounds.getWidth(), bounds.getHeight() * 0.4);
     m_tune.setBounds(bounds.getX(), bounds.getY() + bounds.getHeight() * 0.1 + bounds.getHeight() * 0.4, bounds.getWidth() * 0.4f, bounds.getHeight() * 0.1);
+    m_difference_indicator.setBounds(
+        bounds.getX(),
+        bounds.getY() + bounds.getHeight() * 0.1 + bounds.getHeight() * 0.4 + bounds.getHeight() * 0.1,
+        bounds.getWidth(),
+        bounds.getHeight() * 0.4
+    );
 }

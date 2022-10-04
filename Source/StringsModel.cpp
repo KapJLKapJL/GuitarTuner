@@ -3,7 +3,8 @@
 #include<algorithm>
 
 
-StringsModel::StringsModel()
+StringsModel::StringsModel(Informator* informator) :
+	m_informator(informator)
 {
 	
 }

@@ -1,5 +1,7 @@
 #include "Tuner.h"
 
+#include "Note.h"
+
 Tuner::Tuner(GuitarTunes* guitar_tunes, StringsModel* string_model) :
 	m_string_model(string_model),
 	m_guitar_tunes(guitar_tunes)
@@ -32,6 +34,9 @@ Tuner::Tuner(GuitarTunes* guitar_tunes, StringsModel* string_model) :
 void Tuner::onEvent(StringsModel::FreqChange event)
 {
     m_string_model->onEvent(event);
+    auto string_freq = m_string_model->getStringFrequency();
+    Note string_note = Note(string_freq);
+    m_freq_difference = string_note.calcFrequencyDifference(event.freq);
 }
 
 void Tuner::onEvent(StringsModel::AutoOn event)

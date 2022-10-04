@@ -5,9 +5,6 @@
 class StringsModel
 {
 public:
-	StringsModel();
-	virtual ~StringsModel() = default;
-
 	struct IsTuned{};
 	void onEvent(IsTuned);
 	class Listener
@@ -32,6 +29,9 @@ public:
 	};
 	float getStringFrequency();
 	Informator* getInformator();
+
+	StringsModel(Informator*);
+	virtual ~StringsModel() = default;
 
 	void addListener(Listener*);
 	void deleteListener(Listener*);
