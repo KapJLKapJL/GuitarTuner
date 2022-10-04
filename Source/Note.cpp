@@ -14,7 +14,7 @@ public:
 	}
 	std::optional<int>	getNoteIdx(std::string note_name)
 	{
-		for (int i = 0; i < 12; ++i)
+		for (int i = 11; i >= 0; --i) // sharp notes checked first
 		{
 			if (note_name.find(m_notes[i]) != std::string::npos)
 			{
