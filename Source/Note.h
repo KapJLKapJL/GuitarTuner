@@ -4,6 +4,7 @@
 class Note
 {
 public:
+	Note() = default;
 	Note(float frequency, float reference_frequency=440.f);
 	Note(std::string note_name_with_octave, float reference_frequency = 440.f);
 
@@ -26,5 +27,5 @@ private:
 	int	m_note_idx{ 0 };
 	int m_octave{ 0 };
 
-	float	m_reference_frequency;
+	float	m_reference_frequency{ 440.f };
 };

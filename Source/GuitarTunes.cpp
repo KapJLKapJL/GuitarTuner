@@ -5,25 +5,25 @@
 
 GuitarTune::GuitarTune(std::string&& note1, float frequency1, std::string&& note2, float frequency2, std::string&& note3, float frequency3, std::string&& note4, float frequency4, std::string&& note5, float frequency5, std::string&& note6, float frequency6)
 {
-    setString(0, GuitarStringData(std::move(note1), frequency1));
-    setString(1, GuitarStringData(std::move(note2), frequency2));
-    setString(2, GuitarStringData(std::move(note3), frequency3));
-    setString(3, GuitarStringData(std::move(note4), frequency4));
-    setString(4, GuitarStringData(std::move(note5), frequency5));
-    setString(5, GuitarStringData(std::move(note6), frequency6));
+    setString(0, Note(frequency1));
+    setString(1, Note(frequency2));
+    setString(2, Note(frequency3));
+    setString(3, Note(frequency4));
+    setString(4, Note(frequency5));
+    setString(5, Note(frequency6));
 }
 
 std::string GuitarTune::getStringName(int idx)
 {
-    return m_guitar_strings[idx].note;
+    return m_guitar_strings[idx].getNoteName();
 }
 
 float GuitarTune::getStringFreq(int idx)
 {
-    return m_guitar_strings[idx].frequency;
+    return m_guitar_strings[idx].getFrequency();
 }
 
-void GuitarTune::setString(uint8_t idx, GuitarStringData&& string_data)
+void GuitarTune::setString(uint8_t idx, Note&& string_data)
 {
     m_guitar_strings[idx] = std::move(string_data);
 }

@@ -5,18 +5,7 @@
 #include<map>
 #include<list>
 
-
-class GuitarStringData
-{
-public:
-    GuitarStringData() = default;
-
-	GuitarStringData(std::string&& note, float frequency)
-		:note(note), frequency(frequency) {};
-
-    std::string note{"None"};
-    float frequency{ 0.f };
-};
+#include "Note.h"
 
 
 class GuitarTune
@@ -27,15 +16,15 @@ public:
                std::string&& note3, float frequency3,
                std::string&& note4, float frequency4,
                std::string&& note5, float frequency5,
-        std::string&& note6, float frequency6);
+               std::string&& note6, float frequency6);
 
     std::string getStringName(int idx);
     float       getStringFreq(int idx);
 
 private:
-    void setString(uint8_t idx, GuitarStringData&& string_data);
+    void setString(uint8_t idx, Note&& string_data);
 
-    std::array<GuitarStringData, 6> m_guitar_strings;
+    std::array<Note, 6> m_guitar_strings;
 };
 
 
