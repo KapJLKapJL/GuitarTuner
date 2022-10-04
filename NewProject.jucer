@@ -5,6 +5,8 @@
               pluginManufacturer="KapJL" pluginVST3Category="Analyzer" cppLanguageStandard="17">
   <MAINGROUP id="T0CLuH" name="GuitarTuner">
     <GROUP id="{42FE57CE-5BF9-2C21-2F4E-A3F201952CED}" name="Source">
+      <FILE id="g1RvkI" name="Note.cpp" compile="1" resource="0" file="Source/Note.cpp"/>
+      <FILE id="FlX4xF" name="Note.h" compile="0" resource="0" file="Source/Note.h"/>
       <FILE id="doPQlI" name="FreqUpdater.cpp" compile="1" resource="0" file="Source/FreqUpdater.cpp"/>
       <FILE id="f8cpez" name="FreqUpdater.h" compile="0" resource="0" file="Source/FreqUpdater.h"/>
       <FILE id="cYxNQk" name="DifferenceIndicator.cpp" compile="1" resource="0"
