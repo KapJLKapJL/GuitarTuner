@@ -16,6 +16,7 @@
 #include "Tuner.h"
 #include "DifferenceIndicator.h"
 #include "FreqUpdater.h"
+#include "TunerModes.h"
 
 //==============================================================================
 /**
@@ -36,7 +37,7 @@ private:
     TuneSelector    m_tune_selector;
     StringSelector  m_string_selector;
     DifferenceIndicator m_difference_indicator;
-    juce::TextButton    m_tune;
+    TunerModes  m_tuner_modes;
 
     Tuner   m_tuner;
 

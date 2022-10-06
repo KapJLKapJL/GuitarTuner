@@ -6,7 +6,7 @@
 StringsModel::StringsModel(Informator* informator) :
 	m_informator(informator)
 {
-	
+	m_strategi.reset(new ChangeStringOnButton(this));
 }
 
 void StringsModel::onEvent(IsTuned)
@@ -70,7 +70,15 @@ int StringsModel::getCurrentStringId() const
 
 void StringsModel::ChangeStringOnFreqChange::onEvent(FreqChange event)
 {
-	m_model->m_current_string = m_model->getInformator()->getNearestString(event.freq);
+	auto new_string = m_model->getInformator()->getNearestString(event.freq);
+	if (new_string != m_model->m_current_string)
+	{
+		m_model->m_current_string = new_string;
+		for (auto& listener : m_model->m_listeners)
+		{
+			listener->onEvent(event);
+		}
+	}
 }
 
 void StringsModel::ChangeStringOnButton::onEvent(StringChange event)

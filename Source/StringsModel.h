@@ -6,13 +6,18 @@ class StringsModel
 {
 public:
 	struct IsTuned{};
+	struct FreqChange { float freq; };
+	struct StringChange { int string; };
 	void onEvent(IsTuned);
+	void onEvent(FreqChange);
+	void onEvent(StringChange);
 	class Listener
 	{
 	public:
 		virtual ~Listener() = default;
 
 		virtual void onEvent(IsTuned) {};
+		virtual void onEvent(FreqChange) {};
 	};
 	struct AutoOn {};
 	struct AutoOff {};
@@ -35,11 +40,6 @@ public:
 
 	void addListener(Listener*);
 	void deleteListener(Listener*);
-
-	struct FreqChange { float freq; };
-	struct StringChange { int string; };
-	void onEvent(FreqChange);
-	void onEvent(StringChange);
 
 	int getCurrentStringId() const;
 
@@ -76,7 +76,7 @@ private:
 	friend class ChangeStringOnButton;
 	friend class ChangeStringOnFreqChange;
 
-	int m_current_string{ 1 };
+	int m_current_string{ 99 };
 
 	std::unique_ptr<ChangeStringStrategi>	m_strategi;
 

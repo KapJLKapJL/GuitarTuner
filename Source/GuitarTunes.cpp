@@ -23,6 +23,11 @@ float GuitarTune::getStringFreq(int idx)
     return m_guitar_strings[idx].getFrequency();
 }
 
+Note GuitarTune::getNote(int idx)
+{
+    return m_guitar_strings[idx];
+}
+
 void GuitarTune::setString(uint8_t idx, Note&& string_data)
 {
     m_guitar_strings[idx] = std::move(string_data);

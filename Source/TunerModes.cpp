@@ -5,6 +5,8 @@ TunerModes::TunerModes()
 	initAutoButton();
 	initChromaticButton();
 
+	m_auto_button.triggerClick();
+
 	setSize(100, 20);
 }
 
@@ -18,15 +20,15 @@ void TunerModes::resized()
 	auto bounds = getLocalBounds();
 
 	auto auto_bounds = bounds;
-	auto_bounds.setWidth(bounds.getWidth()*9/14);
+	auto_bounds.setWidth(bounds.getWidth()*4/14);
 
 	m_auto_button.setBounds(auto_bounds);
 
 	auto chromatic_bounds = bounds;
-	chromatic_bounds.setX(auto_bounds.getWidth() + bounds.getWidth() / 14);
-	chromatic_bounds.setWidth(bounds.getWidth() * 4 / 14);
+	chromatic_bounds.setX(auto_bounds.getX() + auto_bounds.getWidth() + bounds.getWidth() / 14);
+	chromatic_bounds.setWidth(bounds.getWidth() * 9 / 14);
 
-	m_chromatic_button.setBounds(bounds);
+	m_chromatic_button.setBounds(chromatic_bounds);
 }
 
 TunerModesModel* TunerModes::getModel()
@@ -37,7 +39,6 @@ TunerModesModel* TunerModes::getModel()
 void TunerModes::initAutoButton()
 {
 	m_auto_button.setButtonText("Auto");
-	m_auto_button.addListener(this);
 	m_auto_button.setClickingTogglesState(true);
 	m_auto_button.setColour(juce::TextButton::buttonColourId,
 		juce::Colour::fromRGB(0, 52, 77));
@@ -57,7 +58,6 @@ void TunerModes::initAutoButton()
 void TunerModes::initChromaticButton()
 {
 	m_chromatic_button.setButtonText("Chromatic");
-	m_chromatic_button.addListener(this);
 	m_chromatic_button.setClickingTogglesState(true);
 	m_chromatic_button.setColour(juce::TextButton::buttonColourId,
 		juce::Colour::fromRGB(0, 52, 77));

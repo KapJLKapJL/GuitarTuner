@@ -1,5 +1,7 @@
 #include "StringSelector.h"
 
+#include<limits>
+
 StringSelector::StringSelector(GuitarTunes* tunes) :
 	m_tunes(tunes),
 	m_model(this)
@@ -55,6 +57,11 @@ void StringSelector::onEvent(StringsModel::IsTuned)
 	m_string_buttons[id].setColour(juce::TextButton::buttonColourId, juce::Colour::fromRGB(0, 172, 255));
 }
 
+void StringSelector::onEvent(StringsModel::FreqChange)
+{
+	m_string_buttons[m_model.getCurrentStringId()].triggerClick();
+}
+
 float StringSelector::getStringFrequency()
 {
 	auto tune = m_tunes->getCurrentTune();
@@ -64,10 +71,22 @@ float StringSelector::getStringFrequency()
 
 int StringSelector::getNearestString(float freq)
 {
-	/*
-	* 
-	*/
-	return 0;
+	auto tune = m_tunes->getCurrentTune();
+
+	float min_diff = std::numeric_limits<float>::max();
+	int idx_min = 0;
+	for (int i = 0; i < 6; ++i)
+	{
+		auto note = tune.getNote(i);
+		auto diff = note.calcFrequencyDifference(freq);
+		if (min_diff > abs(diff))
+		{
+			min_diff = abs(diff);
+			idx_min = i;
+		}
+	}
+
+	return idx_min;
 }
 
 void StringSelector::updateToggleState(juce::Button* button)

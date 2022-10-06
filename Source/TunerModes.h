@@ -4,8 +4,7 @@
 #include"TunerModesModel.h"
 
 class TunerModes :
-	public juce::Component,
-	public juce::Button::Listener
+	public juce::Component
 {
 public:
 	TunerModes();

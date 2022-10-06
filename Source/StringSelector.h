@@ -21,6 +21,8 @@ public:
 
 	void onEvent(GuitarTunes::TuneIsChanged) override;
 	void onEvent(StringsModel::IsTuned) override;
+	void onEvent(StringsModel::FreqChange) override;
+
 
 	float	getStringFrequency() override;
 	int		getNearestString(float freq) override;

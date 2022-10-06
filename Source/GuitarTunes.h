@@ -20,6 +20,7 @@ public:
 
     std::string getStringName(int idx);
     float       getStringFreq(int idx);
+    Note    getNote(int idx);
 
 private:
     void setString(uint8_t idx, Note&& string_data);

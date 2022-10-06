@@ -2,17 +2,27 @@
 
 #include "StringsModel.h"
 #include "GuitarTunes.h"
+#include "TunerModesModel.h"
 
-class Tuner
+class Tuner :
+	public TunerModesModel::Listener
 {
 public:
-	Tuner(GuitarTunes*, StringsModel*);
+	Tuner(GuitarTunes*, StringsModel*, TunerModesModel*);
 	~Tuner() = default;
 
 	void onEvent(StringsModel::FreqChange);
-	void onEvent(StringsModel::AutoOn);
-	void onEvent(StringsModel::AutoOff);
+	//void onEvent(StringsModel::AutoOn);
+	//void onEvent(StringsModel::AutoOff);
 	void onEvent(StringsModel::IsTuned);
+
+	
+	void onEvent(TunerModesModel::AutoOn) override;
+	void onEvent(TunerModesModel::AutoOff) override;
+	/*
+	void onEvent(TunerModesModel::ChromaticOn) override;
+	void onEvent(TunerModesModel::ChromaticOff) override;
+	*/
 
 	double getFreqDifference() const;
 
