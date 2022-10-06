@@ -1,4 +1,25 @@
 #include "TunerModesModel.h"
+#include<algorithm>
+
+void TunerModesModel::onEvent(AutoOn e)
+{
+	notifyListeners(e);
+}
+
+void TunerModesModel::onEvent(AutoOff e)
+{
+	notifyListeners(e);
+}
+
+void TunerModesModel::onEvent(ChromaticOn e )
+{
+	notifyListeners(e);
+}
+
+void TunerModesModel::onEvent(ChromaticOff e)
+{
+	notifyListeners(e);
+}
 
 void TunerModesModel::addListener(Listener* listener)
 {

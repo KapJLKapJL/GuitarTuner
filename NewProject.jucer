@@ -5,6 +5,8 @@
               pluginManufacturer="KapJL" pluginVST3Category="Analyzer" cppLanguageStandard="17">
   <MAINGROUP id="T0CLuH" name="GuitarTuner">
     <GROUP id="{42FE57CE-5BF9-2C21-2F4E-A3F201952CED}" name="Source">
+      <FILE id="bnYL3Y" name="TunerModes.cpp" compile="1" resource="0" file="Source/TunerModes.cpp"/>
+      <FILE id="OYm9Y4" name="TunerModes.h" compile="0" resource="0" file="Source/TunerModes.h"/>
       <FILE id="wEHYvR" name="TunerModesModel.cpp" compile="1" resource="0"
             file="Source/TunerModesModel.cpp"/>
       <FILE id="WcE6uZ" name="TunerModesModel.h" compile="0" resource="0"
