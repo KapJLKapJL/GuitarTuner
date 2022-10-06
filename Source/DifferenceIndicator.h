@@ -2,6 +2,7 @@
 
 #include<JuceHeader.h>
 #include"Tuner.h"
+#include"TransferFunction.h"
 
 class DifferenceIndicator :
 	public juce::AnimatedAppComponent
@@ -18,5 +19,6 @@ public:
 
 private:
 	Tuner* m_tuner;
+	TransferFunction m_transfer_function;
 };
 
