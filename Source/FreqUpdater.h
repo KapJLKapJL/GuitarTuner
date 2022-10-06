@@ -22,7 +22,7 @@ public:
 
 private:
 	static constexpr size_t ring_buffer_size = 2048;
-	RingBuffer<ring_buffer_size>	m_ring_buffer;
+	RingBuffer<float, ring_buffer_size>	m_ring_buffer;
 	double	m_sample_rate;
 };
 
