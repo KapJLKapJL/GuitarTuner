@@ -16,7 +16,7 @@ public:
 	void setNoteName(std::string& note_name);
 
 private:
-	juce::String	m_note_name{ "" };
+	juce::String	m_note_name{ "A" };
 };
 
 class NotesIndicator :

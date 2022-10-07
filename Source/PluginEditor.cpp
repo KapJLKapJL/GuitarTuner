@@ -21,6 +21,7 @@ NewProjectAudioProcessorEditor::NewProjectAudioProcessorEditor(NewProjectAudioPr
     addAndMakeVisible(m_string_selector);
     addAndMakeVisible(m_difference_indicator);
     addAndMakeVisible(m_tuner_modes);
+    addAndMakeVisible(m_notes_indicator);
 
     setSize (400, 300);
 }
@@ -44,11 +45,18 @@ void NewProjectAudioProcessorEditor::resized()
     auto bounds = getLocalBounds();
     m_tune_selector.setBounds(bounds.getX(), bounds.getY(), bounds.getWidth() * 0.4f, bounds.getHeight() * 0.1);
     m_tuner_modes.setBounds(bounds.getX()+ bounds.getWidth() * 0.5f, bounds.getY(), bounds.getWidth() * 0.5f, bounds.getHeight() * 0.1);
-    m_string_selector.setBounds(bounds.getX(), bounds.getY() + bounds.getHeight() * 0.1, bounds.getWidth(), bounds.getHeight() * 0.4);
+    m_string_selector.setBounds(bounds.getX(), bounds.getY() + bounds.getHeight() * 0.1, bounds.getWidth(), bounds.getHeight() * 0.2);
     m_difference_indicator.setBounds(
         bounds.getX(),
-        bounds.getY() + bounds.getHeight() * 0.1 + bounds.getHeight() * 0.4 + bounds.getHeight() * 0.1,
+        bounds.getY() + bounds.getHeight() * 0.1 + bounds.getHeight() * 0.2 + bounds.getHeight() * 0.1,
         bounds.getWidth(),
         bounds.getHeight() * 0.4
+    );
+    
+    m_notes_indicator.setBounds(
+        bounds.getX(),
+        bounds.getY() + bounds.getHeight() * 0.1 + bounds.getHeight() * 0.2 + bounds.getHeight() * 0.1 + bounds.getHeight() * 0.4,
+        bounds.getWidth(),
+        bounds.getHeight() * 0.2
     );
 }

@@ -17,6 +17,7 @@
 #include "DifferenceIndicator.h"
 #include "FreqUpdater.h"
 #include "TunerModes.h"
+#include "NotesIndicator.h"
 
 //==============================================================================
 /**
@@ -38,6 +39,7 @@ private:
     StringSelector  m_string_selector;
     DifferenceIndicator m_difference_indicator;
     TunerModes  m_tuner_modes;
+    NotesIndicator  m_notes_indicator;
 
     Tuner   m_tuner;
 

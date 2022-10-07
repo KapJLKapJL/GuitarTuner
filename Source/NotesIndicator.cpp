@@ -11,7 +11,7 @@ NotesIndicator::NotesIndicator()
 	setSize(100, 20);
 }
 
-void NotesIndicator::paint(juce::Graphics&)
+void NotesIndicator::paint(juce::Graphics& g)
 {
 }
 
@@ -52,11 +52,11 @@ void NoteIndicator::paint(juce::Graphics& g)
 {
 	auto bounds = getLocalBounds();
 	g.setColour(juce::Colour::fromRGB(0, 52, 77));
-	g.drawRoundedRectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight(), 0.4f, 0.f);
+	g.fillRoundedRectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight(), (bounds.getWidth() + bounds.getHeight()) / 8.f);
 
 	g.setColour(juce::Colours::white);
 	g.setFont(bounds.getHeight());
-	g.drawFittedText(m_note_name, bounds, juce::NotificationType::dontSendNotification, 1);
+	g.drawText(m_note_name, bounds, juce::Justification::centred, 1);
 }
 
 void NoteIndicator::resized()
