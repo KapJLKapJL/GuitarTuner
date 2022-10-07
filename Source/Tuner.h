@@ -1,4 +1,5 @@
 #pragma once
+#include <functional>
 
 #include "StringsModel.h"
 #include "GuitarTunes.h"
@@ -19,14 +20,16 @@ public:
 	
 	void onEvent(TunerModesModel::AutoOn) override;
 	void onEvent(TunerModesModel::AutoOff) override;
-	/*
 	void onEvent(TunerModesModel::ChromaticOn) override;
 	void onEvent(TunerModesModel::ChromaticOff) override;
-	*/
 
 	double getFreqDifference() const;
 
 private:
+	Note getStringNearestNote(float) const;
+	Note getChromaticNearestNote(float) const;
+	std::function<Note(float)>	getNoteStrategi;
+
 	GuitarTunes*	m_guitar_tunes;
 	StringsModel*	m_string_model;
 

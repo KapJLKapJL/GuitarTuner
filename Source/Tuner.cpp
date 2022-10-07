@@ -36,9 +36,8 @@ Tuner::Tuner(GuitarTunes* guitar_tunes, StringsModel* string_model, TunerModesMo
 void Tuner::onEvent(StringsModel::FreqChange event)
 {
     m_string_model->onEvent(event);
-    auto string_freq = m_string_model->getStringFrequency();
-    Note string_note = Note(string_freq);
-    m_freq_difference = string_note.calcFrequencyDifference(event.freq);
+    auto note = getNoteStrategi(event.freq);
+    m_freq_difference = note.calcFrequencyDifference(event.freq);
 }
 
 /*
@@ -68,6 +67,22 @@ void Tuner::onEvent(TunerModesModel::AutoOff)
     m_string_model->onEvent(StringsModel::AutoOff());
 }
 
+void Tuner::onEvent(TunerModesModel::ChromaticOn)
+{
+    getNoteStrategi = [this](float f)
+    {
+        return getChromaticNearestNote(f);
+    };
+}
+
+void Tuner::onEvent(TunerModesModel::ChromaticOff)
+{
+    getNoteStrategi = [this](float f)
+    {
+        return getStringNearestNote(f);
+    };
+}
+
 
 
 
@@ -76,4 +91,15 @@ void Tuner::onEvent(TunerModesModel::AutoOff)
 double Tuner::getFreqDifference() const
 {
     return m_freq_difference;
+}
+
+Note Tuner::getStringNearestNote(float) const
+{
+    auto string_freq = m_string_model->getStringFrequency();
+    return Note(string_freq);
+}
+
+Note Tuner::getChromaticNearestNote(float f) const
+{
+    return Note(f);
 }

@@ -6,6 +6,8 @@ TunerModes::TunerModes()
 	initChromaticButton();
 
 	m_auto_button.triggerClick();
+	m_chromatic_button.triggerClick();
+	m_chromatic_button.triggerClick();
 
 	setSize(100, 20);
 }
