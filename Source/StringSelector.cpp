@@ -19,20 +19,19 @@ void StringSelector::paint(juce::Graphics&)
 void StringSelector::resized()
 {
 	int string_index = 5;
-	auto bounds = getLocalBounds();
-	auto button_width = bounds.getWidth() * (2.f + 2.f / 3.f) / 19.f;
-	auto button_distance = bounds.getWidth() * 3.f / 19.f;
-	auto button_x_offset = bounds.getWidth() * 2.f / (3.f * 19.f);
-	auto button_height = bounds.getHeight() * 1.5f / 5.f;
-	auto button_y_offset = bounds.getHeight() * 1.75f / 5.f;
 
+	// proportions
+	constexpr float button_stride = 2.5 / 14.5;
+	constexpr float button_width = 2. / 14.5;
+
+	auto bounds = getLocalBounds();
 	for (auto& button : m_string_buttons)
 	{
 		button.setBounds(
-			button_x_offset + button_distance * string_index,
-			button_y_offset,
-			button_width,
-			button_height
+			bounds.getWidth() * string_index * button_stride,
+			bounds.getY(),
+			bounds.getWidth() * button_width,
+			bounds.getHeight()
 		);
 
 		string_index--;
