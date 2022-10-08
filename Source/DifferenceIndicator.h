@@ -18,6 +18,8 @@ public:
 
 
 private:
+	juce::Point<float> calcRotatedPoint(float value);
+
 	Tuner* m_tuner;
 	TransferFunction m_transfer_function;
 };
