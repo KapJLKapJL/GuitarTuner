@@ -2,9 +2,10 @@
 
 #include "Note.h"
 
-Tuner::Tuner(GuitarTunes* guitar_tunes, StringsModel* string_model, TunerModesModel* tuner_modes_model) :
+Tuner::Tuner(GuitarTunes* guitar_tunes, StringsModel* string_model, TunerModesModel* tuner_modes_model, NotesIndicatorModel* notes_indicator_model) :
 	m_string_model(string_model),
-	m_guitar_tunes(guitar_tunes)
+	m_guitar_tunes(guitar_tunes),
+    m_notes_indicator_model(notes_indicator_model)
 {
     tuner_modes_model->addListener(this);
 
@@ -41,6 +42,7 @@ void Tuner::onEvent(StringsModel::FreqChange event)
     if (abs(m_freq_difference) < 5.f && abs(next_diff) < 5.f)
         m_string_model->onEvent(StringsModel::IsTuned());
     m_freq_difference = next_diff;
+    m_notes_indicator_model->onEvent(NotesIndicatorModel::resetNote{ note });
 }
 
 /*

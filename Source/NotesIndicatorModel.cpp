@@ -1,5 +1,13 @@
 #include "NotesIndicatorModel.h"
 
+void NotesIndicatorModel::onEvent(resetNote event)
+{
+	for (auto& listener : m_listeners)
+	{
+		listener->onEvent(event);
+	}
+}
+
 void NotesIndicatorModel::addListener(Listener* listener)
 {
 	m_listeners.emplace_back(listener);

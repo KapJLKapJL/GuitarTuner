@@ -4,12 +4,13 @@
 #include "StringsModel.h"
 #include "GuitarTunes.h"
 #include "TunerModesModel.h"
+#include "NotesIndicatorModel.h"
 
 class Tuner :
 	public TunerModesModel::Listener
 {
 public:
-	Tuner(GuitarTunes*, StringsModel*, TunerModesModel*);
+	Tuner(GuitarTunes*, StringsModel*, TunerModesModel*, NotesIndicatorModel*);
 	~Tuner() = default;
 
 	void onEvent(StringsModel::FreqChange);
@@ -32,6 +33,7 @@ private:
 
 	GuitarTunes*	m_guitar_tunes;
 	StringsModel*	m_string_model;
+	NotesIndicatorModel* m_notes_indicator_model;
 
 	double	m_freq_difference{ 100. }; // 100% = 1 tone
 };

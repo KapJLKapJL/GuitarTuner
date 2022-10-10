@@ -14,6 +14,7 @@ public:
 
 		virtual void onEvent(resetNote) {};
 	};
+	void onEvent(resetNote);
 
 	void addListener(Listener*);
 	void deleteListener(Listener*);

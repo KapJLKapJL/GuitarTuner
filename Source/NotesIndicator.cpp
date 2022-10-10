@@ -46,6 +46,12 @@ void NotesIndicator::onEvent(NotesIndicatorModel::resetNote event)
 	m_below_note.setNoteName(below_note.getNoteName());
 	m_above_note.setNoteName(above_note.getNoteName());
 
+	repaint();
+}
+
+NotesIndicatorModel* NotesIndicator::getModelPtr()
+{
+	return &m_model;
 }
 
 void NoteIndicator::paint(juce::Graphics& g)

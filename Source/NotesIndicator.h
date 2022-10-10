@@ -32,6 +32,8 @@ public:
 
 	void onEvent(NotesIndicatorModel::resetNote) override;
 
+	NotesIndicatorModel* getModelPtr();
+
 private:
 	NoteIndicator	m_above_note;
 	NoteIndicator	m_target_note;

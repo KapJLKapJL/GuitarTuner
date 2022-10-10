@@ -13,7 +13,7 @@
 NewProjectAudioProcessorEditor::NewProjectAudioProcessorEditor(NewProjectAudioProcessor& p)
     : AudioProcessorEditor(&p), audioProcessor(p),
     m_string_selector(m_tune_selector.getGuitarTunes()),
-    m_tuner(m_tune_selector.getGuitarTunes(), m_string_selector.getStringsModel(), m_tuner_modes.getModel()),
+    m_tuner(m_tune_selector.getGuitarTunes(), m_string_selector.getStringsModel(), m_tuner_modes.getModel(), m_notes_indicator.getModelPtr()),
     m_difference_indicator(&m_tuner),
     m_freq_updater(&p, &m_tuner)
 {
