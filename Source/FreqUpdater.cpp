@@ -1,6 +1,7 @@
 #include "FreqUpdater.h"
 
 #include "FreqFinderNSDF.h"
+#include "Constants.h"
 
 void FreqFinderGetter::setSampleRate(double sample_rate)
 {
@@ -22,7 +23,7 @@ FreqUpdater::FreqUpdater(FreqFinderGetter* freq_finder_getter, Tuner* tuner) :
 	m_freq_finder_getter(freq_finder_getter),
 	m_tuner(tuner)
 {
-	startTimerHz(5);
+	startTimerHz(tunerConstants::diff_Hz);
 }
 
 void FreqUpdater::timerCallback()

@@ -1,10 +1,11 @@
 #include "DifferenceIndicator.h"
+#include "Constants.h"
 
 DifferenceIndicator::DifferenceIndicator(Tuner* tuner) :
 	m_tuner(tuner),
-	m_transfer_function(1./(2.*3.14*2.5), 1./(2.*3.14*60.))
+	m_transfer_function(1./(2.*3.14*(tunerConstants::diff_Hz*1.5)), 1./(2.*3.14*tunerConstants::screen_Hz))
 {
-	setFramesPerSecond(60);
+	setFramesPerSecond(tunerConstants::screen_Hz);
 	setSize(100, 100);
 }
 
@@ -13,7 +14,7 @@ void DifferenceIndicator::paint(juce::Graphics& g)
 	g.fillAll(getLookAndFeel().findColour(juce::ResizableWindow::backgroundColourId));
 
 	auto bounds = getLocalBounds();
-	g.setColour(juce::Colour::fromRGB(0, 52, 77));
+	g.setColour(tunerConstants::default_color);
 	g.fillRoundedRectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight(), (bounds.getWidth() + bounds.getHeight()) / 32.f);
 
 	juce::Rectangle<float>	indicator_bounds;
@@ -63,7 +64,7 @@ void DifferenceIndicator::paint(juce::Graphics& g)
 	
 	juce::Colour indicator_colour(juce::Colours::white);
 	if (abs(difference) < 5.f)
-		indicator_colour = juce::Colours::mediumvioletred;
+		indicator_colour = tunerConstants::tuned_color;
 	g.setColour(indicator_colour);
 
 	auto rot_point = calcRotatedPoint(difference);
@@ -89,7 +90,7 @@ juce::Point<float> DifferenceIndicator::calcRotatedPoint(float value)
 {
 	juce::Point<float> point{ 1.f, 0.f };
 
-	float diff_sign = value > 0 ? 1.f : -1.f;
+	float diff_sign = value > 0 ? -1.f : 1.f;
 	float visible_difference = 1. - exp(-(abs(value) * 0.02));
 	visible_difference *= diff_sign;
 	float angle = juce::float_Pi * (visible_difference * 0.5 + 0.5);

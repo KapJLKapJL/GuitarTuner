@@ -2,6 +2,8 @@
 
 #include<limits>
 
+#include "Constants.h"
+
 StringSelector::StringSelector(GuitarTunes* tunes) :
 	m_tunes(tunes),
 	m_model(this)
@@ -43,8 +45,8 @@ void StringSelector::onEvent(GuitarTunes::TuneIsChanged)
 	auto tune = m_tunes->getCurrentTune();
 	for (int i = 0; i < 6; ++i)
 	{
-		m_string_buttons[i].setColour(juce::TextButton::buttonOnColourId, juce::Colour::fromRGB(133, 211, 250));
-		m_string_buttons[i].setColour(juce::TextButton::buttonColourId, juce::Colour::fromRGB(0, 52, 77));
+		m_string_buttons[i].setColour(juce::TextButton::buttonOnColourId, tunerConstants::selected_color);
+		m_string_buttons[i].setColour(juce::TextButton::buttonColourId, tunerConstants::default_color);
 		m_string_buttons[i].setButtonText(tune.getStringName(i));
 	}
 }
@@ -52,8 +54,8 @@ void StringSelector::onEvent(GuitarTunes::TuneIsChanged)
 void StringSelector::onEvent(StringsModel::IsTuned)
 {
 	auto id = m_model.getCurrentStringId();
-	m_string_buttons[id].setColour(juce::TextButton::buttonOnColourId, juce::Colour::fromRGB(0, 172, 255));
-	m_string_buttons[id].setColour(juce::TextButton::buttonColourId, juce::Colour::fromRGB(0, 172, 255));
+	m_string_buttons[id].setColour(juce::TextButton::buttonOnColourId, tunerConstants::tuned_color);
+	m_string_buttons[id].setColour(juce::TextButton::buttonColourId, tunerConstants::tuned_color);
 }
 
 void StringSelector::onEvent(StringsModel::FreqChange)

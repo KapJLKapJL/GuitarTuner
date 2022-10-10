@@ -1,4 +1,5 @@
 #include "NotesIndicator.h"
+#include "Constants.h"
 
 NotesIndicator::NotesIndicator()
 {
@@ -57,7 +58,7 @@ NotesIndicatorModel* NotesIndicator::getModelPtr()
 void NoteIndicator::paint(juce::Graphics& g)
 {
 	auto bounds = getLocalBounds();
-	g.setColour(juce::Colour::fromRGB(0, 52, 77));
+	g.setColour(tunerConstants::default_color);
 	g.fillRoundedRectangle(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight(), (bounds.getWidth() + bounds.getHeight()) / 8.f);
 
 	g.setColour(juce::Colours::white);

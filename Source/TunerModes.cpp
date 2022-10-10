@@ -1,4 +1,5 @@
 #include "TunerModes.h"
+#include "Constants.h"
 
 TunerModes::TunerModes()
 {
@@ -43,9 +44,9 @@ void TunerModes::initAutoButton()
 	m_auto_button.setButtonText("Auto");
 	m_auto_button.setClickingTogglesState(true);
 	m_auto_button.setColour(juce::TextButton::buttonColourId,
-		juce::Colour::fromRGB(0, 52, 77));
+		tunerConstants::default_color);
 	m_auto_button.setColour(juce::TextButton::buttonOnColourId,
-		juce::Colour::fromRGB(0, 172, 255));
+		tunerConstants::selected_color);
 
 	m_auto_button.onClick = [this]
 	{
@@ -62,9 +63,9 @@ void TunerModes::initChromaticButton()
 	m_chromatic_button.setButtonText("Chromatic");
 	m_chromatic_button.setClickingTogglesState(true);
 	m_chromatic_button.setColour(juce::TextButton::buttonColourId,
-		juce::Colour::fromRGB(0, 52, 77));
+		tunerConstants::default_color);
 	m_chromatic_button.setColour(juce::TextButton::buttonOnColourId,
-		juce::Colour::fromRGB(0, 172, 255));
+		tunerConstants::selected_color);
 
 	m_chromatic_button.onClick = [this]
 	{
