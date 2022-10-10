@@ -37,7 +37,10 @@ void Tuner::onEvent(StringsModel::FreqChange event)
 {
     m_string_model->onEvent(event);
     auto note = getNoteStrategi(event.freq);
-    m_freq_difference = note.calcFrequencyDifference(event.freq);
+    auto next_diff = note.calcFrequencyDifference(event.freq);
+    if (abs(m_freq_difference) < 5.f && abs(next_diff) < 5.f)
+        m_string_model->onEvent(StringsModel::IsTuned());
+    m_freq_difference = next_diff;
 }
 
 /*

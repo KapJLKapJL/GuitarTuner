@@ -61,6 +61,11 @@ void DifferenceIndicator::paint(juce::Graphics& g)
 	auto difference = m_tuner->getFreqDifference();
 	difference = m_transfer_function.update(difference);
 	
+	juce::Colour indicator_colour(juce::Colours::white);
+	if (abs(difference) < 5.f)
+		indicator_colour = juce::Colours::mediumvioletred;
+	g.setColour(indicator_colour);
+
 	auto rot_point = calcRotatedPoint(difference);
 
 	juce::Line<float> line(
